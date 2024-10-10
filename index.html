@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Array Cardio 💪</title>
+    <link rel="icon" href="https://fav.farm/🔥" />
+  </head>
+  <body>
+    <p><em>Psst: have a look at the JavaScript Console</em> 💁</p>
+    <script>
+      // Get your shorts on - this is an array workout!
+      // ## Array Cardio Day 1
+
+      // Some data we can work with
+
+      const inventors = [
+        { first: "Albert", last: "Einstein", year: 1879, passed: 1955 },
+        { first: "Isaac", last: "Newton", year: 1643, passed: 1727 },
+        { first: "Galileo", last: "Galilei", year: 1564, passed: 1642 },
+        { first: "Marie", last: "Curie", year: 1867, passed: 1934 },
+        { first: "Johannes", last: "Kepler", year: 1571, passed: 1630 },
+        { first: "Nicolaus", last: "Copernicus", year: 1473, passed: 1543 },
+        { first: "Max", last: "Planck", year: 1858, passed: 1947 },
+        { first: "Katherine", last: "Blodgett", year: 1898, passed: 1979 },
+        { first: "Ada", last: "Lovelace", year: 1815, passed: 1852 },
+        { first: "Sarah E.", last: "Goode", year: 1855, passed: 1905 },
+        { first: "Lise", last: "Meitner", year: 1878, passed: 1968 },
+        { first: "Hanna", last: "Hammarström", year: 1829, passed: 1909 },
+      ];
+
+      const people = [
+        "Bernhard, Sandra",
+        "Bethea, Erin",
+        "Becker, Carl",
+        "Bentsen, Lloyd",
+        "Beckett, Samuel",
+        "Blake, William",
+        "Berger, Ric",
+        "Beddoes, Mick",
+        "Beethoven, Ludwig",
+        "Belloc, Hilaire",
+        "Begin, Menachem",
+        "Bellow, Saul",
+        "Benchley, Robert",
+        "Blair, Robert",
+        "Benenson, Peter",
+        "Benjamin, Walter",
+        "Berlin, Irving",
+        "Benn, Tony",
+        "Benson, Leana",
+        "Bent, Silas",
+        "Berle, Milton",
+        "Berry, Halle",
+        "Biko, Steve",
+        "Beck, Glenn",
+        "Bergman, Ingmar",
+        "Black, Elk",
+        "Berio, Luciano",
+        "Berne, Eric",
+        "Berra, Yogi",
+        "Berry, Wendell",
+        "Bevan, Aneurin",
+        "Ben-Gurion, David",
+        "Bevel, Ken",
+        "Biden, Joseph",
+        "Bennington, Chester",
+        "Bierce, Ambrose",
+        "Billings, Josh",
+        "Birrell, Augustine",
+        "Blair, Tony",
+        "Beecher, Henry",
+        "Biondo, Frank",
+      ];
+
+      // Array.prototype.filter()
+      // 1. Filter the list of inventors for those who were born in the 1500's
+
+      /*
+  Explanation:
+  - The `filter` method is used to create a new array by selecting elements 
+    from the original array based on a condition.
+  - In this case, it filters the `inventors` array to include only those 
+    whose `year` property is between 1500 (inclusive) and 1600 (exclusive).
+  
+  - Syntax:
+    const filteredArray = array.filter(callbackFunction);
+    
+  - In the callback function, the `inventor` parameter represents each element 
+    in the `inventors` array, and the condition checks if their birth year is 
+    in the 1500s.
+    
+  - `console.table` is used to display the resulting array in a neat table format 
+    in the console, which is helpful for inspecting the data.
+*/
+
+      // Code:
+      const inventorsBornIn1500 = inventors.filter(
+        (inventor) => inventor.year >= 1500 && inventor.year < 1600
+      );
+      console.table(inventorsBornIn1500);
+
+      // Array.prototype.map()
+      // 2. Give us an array of the inventors first and last names
+
+      /*
+  Explanation:
+  - The `map` method is used to create a new array by transforming each element 
+    in the original array. In this case, it is used to create an array of full names.
+  
+  - Syntax:
+    const newArray = array.map(callbackFunction);
+    
+  - The callback function takes an `inventor` object and returns a string 
+    that combines the `first` and `last` names of the inventor using template literals.
+  
+  - `map` doesn't modify the original array; it returns a new array with the results 
+    of the transformation applied to each element.
+    
+  - `console.log(fullName)` prints the array of full names to the console.
+*/
+
+      // Code:
+      const fullName = inventors.map(
+        (inventor) => `${inventor.first} ${inventor.last}`
+      );
+
+      console.log(fullName);
+
+      // Array.prototype.sort()
+      // 3. Sort the inventors by birthdate, oldest to youngest
+
+      /*
+  Explanation:
+  - The `sort` method is used to sort elements in an array. By default, `sort` 
+    converts elements to strings and compares them. To sort numbers or objects, 
+    you need to provide a custom comparison function.
+  
+  - Syntax:
+    const sortedArray = array.sort((a, b) => aValue - bValue);
+    
+  - In this case, the callback function `(a, b)` compares two inventors based 
+    on their `year` property. `a.year - b.year` sorts them in ascending order.
+  
+  - If `a.year` is less than `b.year`, `a` will come before `b` in the sorted array.
+  
+  - `console.table(sortedInventors)` prints the sorted array of inventors in 
+    a table format, making it easier to inspect the sorted data.
+*/
+
+      // Code:
+      const sortedInventors = inventors.sort((a, b) => a.year - b.year);
+
+      console.table(sortedInventors);
+
+      // Array.prototype.reduce()
+      // 4. How many years did all the inventors live all together?
+
+      /*
+  Explanation:
+  - The `reduce` method is used to accumulate values from an array into a single value.
+    In this case, it calculates the total number of years all inventors lived.
+  
+  - Syntax:
+    const result = array.reduce((accumulator, currentValue) => {
+      // logic to accumulate values
+      return updatedAccumulator;
+    }, initialValue);
+  
+  - In this example:
+    - `total` is the accumulator that holds the running total of years lived.
+    - `inventor` represents each inventor object in the array.
+    - The `inventor.passed - inventor.year` expression calculates how long each 
+      inventor lived (their age).
+    - The result of `total + (inventor.passed - inventor.year)` updates the total 
+      number of years lived, starting from the initial value of `0`.
+  
+  - `console.log(totalYears)` prints the total years to the console.
+*/
+
+      // Code:
+      const totalYears = inventors.reduce((total, inventor) => {
+        return total + (inventor.passed - inventor.year);
+      }, 0);
+
+      console.log(totalYears);
+
+      // 5. Sort the inventors by years lived
+
+      /*
+  Explanation:
+  - The `sort` method is used to order elements in an array. By default, `sort` compares elements as strings, 
+    so for numeric or custom sorting, a comparison function is needed.
+  
+  - Syntax:
+    const sortedArray = array.sort((a, b) => comparisonLogic);
+  
+  - In this case, the inventors are sorted by the number of years they lived. 
+    The callback function `(a, b)` calculates how long each inventor lived:
+      - `lastGuy` is the number of years `a` lived (`a.passed - a.year`).
+      - `nextGuy` is the number of years `b` lived (`b.passed - b.year`).
+  
+  - The comparison logic `lastGuy > nextGuy ? -1 : 1` sorts the inventors in descending order:
+    - If `lastGuy` lived longer than `nextGuy`, return `-1` (to place `lastGuy` before `nextGuy`).
+    - Otherwise, return `1` (to place `nextGuy` before `lastGuy`).
+  
+  - `console.table(sortedInventorsByYearsLived)` displays the sorted list of inventors and their properties in a neat table.
+*/
+
+      // Code:
+      const sortedInventorsByYearsLived = inventors.sort((a, b) => {
+        const lastGuy = a.passed - a.year;
+        const nextGuy = b.passed - b.year;
+        return lastGuy > nextGuy ? -1 : 1;
+      });
+
+      console.table(sortedInventorsByYearsLived);
+
+      // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
+      // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
+      //   the below code works in the console of the wikipedia page above.
+
+      /*
+  Explanation:
+  - `document.querySelector(".mw-category")` selects the first element in the DOM with the class `mw-category`.
+    This is likely a container element that holds the links you want to work with.
+  
+  - `category.querySelectorAll("a")` selects all `<a>` (anchor) elements within the `.mw-category` element.
+    - The result is a NodeList, which needs to be converted into an array to use array methods.
+    - `[...category.querySelectorAll("a")]` uses the spread operator to create an array from the NodeList.
+  
+  - `map(link => link.textContent)` extracts the text content (the visible text) of each anchor (`<a>`) tag.
+  
+  - `filter(streetName => streetName.includes("de"))` filters the array of street names, keeping only those that 
+    include the string "de".
+  
+  - `console.log(de)` prints the array of filtered street names that include "de" to the console.
+  
+  - This combination of DOM querying, mapping, and filtering can be useful when working with dynamic content 
+    from a webpage.
+*/
+
+      // Code:
+      //   const category = document.querySelector(".mw-category");
+      //   const links = [...category.querySelectorAll("a")];
+      //   const de = links
+      //     .map((link) => link.textContent)
+      //     .filter((streetName) => streetName.includes("de"));
+
+      //   console.log(de);
+
+      // 7. sort Exercise
+      // Sort the people alphabetically by last name
+
+      /*
+  Explanation:
+  - This code sorts an array of people based on their last names.
+  
+  - `a.split(", ")` and `b.split(", ")` are used to split each person's full name (formatted as "Last, First")
+    into an array where the first element is the last name and the second is the first name.
+    - `const [aLast, aFirst] = a.split(", ")` uses destructuring to assign the last name to `aLast` 
+      and the first name to `aFirst`.
+    - Similarly, `const [bLast, bFirst] = b.split(", ")` assigns the last and first names for `b`.
+  
+  - The comparison `aLast > bLast ? 1 : -1` sorts the people by their last names in ascending order:
+    - If `aLast` comes after `bLast` alphabetically, return `1` (to place `b` before `a`).
+    - If `aLast` comes before `bLast`, return `-1` (to place `a` before `b`).
+  
+  - `console.table(sortedPeople)` prints the sorted list of people in a table format for easy viewing.
+  
+  - This sorting logic can be adapted for different name formats or to sort by first name if needed.
+*/
+
+      // Code:
+      const sortedPeople = people.sort((a, b) => {
+        const [aLast, aFirst] = a.split(", ");
+        const [bLast, bFirst] = b.split(", ");
+        return aLast > bLast ? 1 : -1;
+      });
+
+      console.table(sortedPeople);
+
+      // 8. Reduce Exercise
+      // Sum up the instances of each of these
+
+      /*
+  Explanation:
+  - This code counts the occurrences of each unique word in the `data` array 
+    using the `reduce` method.
+
+  - `data` is an array containing various vehicle types and actions.
+
+  - The `reduce` method is invoked on the `data` array to accumulate a count of each word:
+    - The syntax for `reduce` is:
+      const result = array.reduce((accumulator, currentValue) => {
+        // logic to accumulate values
+        return updatedAccumulator;
+      }, initialValue);
+    
+  - In this example:
+    - `acc` is the accumulator object that stores the count of each word.
+    - `word` represents each string in the `data` array.
+    
+  - The logic checks if the current `word` already exists as a key in the `acc` object:
+    - If it does, `acc[word]++` increments the count for that word.
+    - If it doesn't, `acc[word] = 1` initializes it with a count of `1`.
+  
+  - Finally, `console.table(dataCount)` prints the accumulated counts of each word in a neat table format.
+  
+  - This approach is effective for tallying up occurrences in any array of items.
+*/
+
+      // Code:
+      const data = [
+        "car",
+        "car",
+        "truck",
+        "truck",
+        "bike",
+        "walk",
+        "car",
+        "van",
+        "bike",
+        "walk",
+        "car",
+        "van",
+        "car",
+        "truck",
+      ];
+
+      const dataCount = data.reduce((acc, word) => {
+        if (acc[word]) {
+          acc[word]++;
+        } else {
+          acc[word] = 1;
+        }
+        return acc;
+      }, {});
+
+      console.table(dataCount);
+    </script>
+  </body>
+</html>
